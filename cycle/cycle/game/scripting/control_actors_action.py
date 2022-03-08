@@ -20,10 +20,10 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction = Point(constants.CELL_SIZE, 0)
+        self._direction = Point(0,-constants.CELL_SIZE)# changed to make the cycles vertical
         #second cycle control
         self._keyboard_service2 = keyboard_service
-        self._direction2 = Point(constants.CELL_SIZE, 0)
+        self._direction2 = Point(0,-constants.CELL_SIZE) # same here
 
     def execute(self, cast, script):
         """Executes the control actors action.

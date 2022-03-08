@@ -53,26 +53,12 @@ class Cycle2(Actor):
         self._segments2[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        # x = int(constants.MAX_X / 2)
-        # y = int(constants.MAX_Y / 2)
-        #Position of 2 snake?
-        x2 = int(constants.MAX_X / 4)
-        y2 = int(constants.MAX_Y / 4)
+      
+        #Position of 2 cycle 2
+        x2 = int(constants.MAX_X / 3) # changed the postition of the cycle
+        y2 = int(constants.MAX_Y / 2) # same here
         
-        #First snake
-        # for i in range(constants.SNAKE_LENGTH): # this may be the part we need to copy for another snake
-        #     position = Point(x - i * constants.CELL_SIZE, y)
-        #     velocity = Point(1 * constants.CELL_SIZE, 0)
-        #     text = "8" if i == 0 else "#"
-        #     color = constants.GREEN if i == 0 else constants.GREEN
-            
-        #     segment = Actor() # mabye this is where we make the new snake?
-        #     segment.set_position(position)
-        #     segment.set_velocity(velocity)
-        #     segment.set_text(text)
-        #     segment.set_color(color)
-        #     self._segments.append(segment)
-            
+      
             #Second snake
         for i in range(constants.SNAKE_LENGTH): # this may be the part we need to copy for another snake
             position2 = Point(x2 - i * constants.CELL_SIZE, y2)
