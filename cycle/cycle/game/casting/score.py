@@ -24,4 +24,4 @@ class Score(Actor):
             points (int): The points to add.
         """
         self._points += points
-        self.set_text(f"Player One: {self._points}                                      Player 1 is Red    Player 2 Green                                          Player Two: 0")
+        self.set_text(f"Player One: {self._points}                                      Player 1 is Green    Player 2 Red                                          Player Two: 0")
