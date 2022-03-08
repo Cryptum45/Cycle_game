@@ -75,15 +75,15 @@ class Cycle_1(Actor):
             self._segments.append(segment)
             
             #Second snake
-        for i in range(constants.SNAKE_LENGTH): # this may be the part we need to copy for another snake
-            position2 = Point(x2 - i * constants.CELL_SIZE, y2)
-            velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
-            color = constants.RED if i == 0 else constants.RED
-            #maybe this is how we make a new snake?
-            segment2 = Actor()
-            segment2.set_position(position2)
-            segment2.set_velocity(velocity)
-            segment2.set_text(text)
-            segment2.set_color(constants.RED)
-            self._segments.append(segment2)
+        # for i in range(constants.SNAKE_LENGTH): # this may be the part we need to copy for another snake
+        #     position2 = Point(x2 - i * constants.CELL_SIZE, y2)
+        #     velocity = Point(1 * constants.CELL_SIZE, 0)
+        #     text = "8" if i == 0 else "#"
+        #     color = constants.RED if i == 0 else constants.RED
+        #     #maybe this is how we make a new snake?
+        #     segment2 = Actor()
+        #     segment2.set_position(position2)
+        #     segment2.set_velocity(velocity)
+        #     segment2.set_text(text)
+        #     segment2.set_color(constants.RED)
+        #     self._segments.append(segment2)

@@ -21,6 +21,9 @@ class ControlActorsAction(Action):
         """
         self._keyboard_service = keyboard_service
         self._direction = Point(constants.CELL_SIZE, 0)
+        #second cycle control
+        self._keyboard_service2 = keyboard_service
+        self._direction2 = Point(constants.CELL_SIZE, 0)
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -51,21 +54,21 @@ class ControlActorsAction(Action):
         # add the jkli movement for the second snake
         
         # left
-        if self._keyboard_service.is_key_down('j'):
-            self._direction = Point(-constants.CELL_SIZE, 0)
+        if self._keyboard_service2.is_key_down('j'):
+            self._direction2 = Point(-constants.CELL_SIZE, 0)
         
         # right
-        if self._keyboard_service.is_key_down('l'):
-            self._direction = Point(constants.CELL_SIZE, 0)
+        if self._keyboard_service2.is_key_down('l'):
+            self._direction2 = Point(constants.CELL_SIZE, 0)
         
         # up
-        if self._keyboard_service.is_key_down('i'):
-            self._direction = Point(0, -constants.CELL_SIZE)
+        if self._keyboard_service2.is_key_down('i'):
+            self._direction2 = Point(0, -constants.CELL_SIZE)
         
         # down
-        if self._keyboard_service.is_key_down('k'):
-            self._direction = Point(0, constants.CELL_SIZE)
+        if self._keyboard_service2.is_key_down('k'):
+            self._direction2 = Point(0, constants.CELL_SIZE)
         
-        # so in order for us to get the second snake to get controlled we need to put where "snakes" is to like "snakes2"
-        snake = cast.get_first_actor("snakes")
-        snake.turn_head(self._direction)
+        # Made the keyboard service for cycle2
+        cycle2 = cast.get_first_actor("cycle2")
+        cycle2.turn_head(self._direction2)
