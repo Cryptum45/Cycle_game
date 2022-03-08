@@ -22,6 +22,7 @@ root                    (project root folder)
 +-- Cycle_game          (source code for game)
   +-- game              (specific game classes)
   +-- __main__.py       (entry point for program)
+  +-- constants.py      (game constants)
 +-- README.md           (general info)
 ```
 
