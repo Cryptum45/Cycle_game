@@ -1,5 +1,4 @@
 import constants
-#from cycle.cycle.game.casting.cycle_2 import Cycle2
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
@@ -27,28 +26,9 @@ class HandleCollisionsAction(Action):
             script (Script): The script of Actions in the game.
         """
         if not self._is_game_over:
-            self._handle_food_collision(cast)
             self._handle_segment_collision(cast)
             self._handle_game_over(cast)
 
-    def _handle_food_collision(self, cast):
-        """Updates the score nd moves the food if the snake collides with the food.
-        
-        Args:
-            cast (Cast): The cast of Actors in the game.
-        """
-        score = cast.get_first_actor("scores")
-        food = cast.get_first_actor("foods")
-        snake = cast.get_first_actor("snakes")
-        cycle2 = cast.get_first_actor("cycle2") #second snake
-        head = snake.get_head()
-        head2 = cycle2.get_head() #second cycle
-
-        if head.get_position().equals(head2.get_position()):
-            points = food.get_points()
-            snake.grow_tail(points)
-            score.add_points(points)
-            food.reset()
     
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the snake collides with one of its segments.
@@ -56,9 +36,9 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        snake = cast.get_first_actor("snakes")
-        head = snake.get_segments()[0]
-        segments = snake.get_segments()[1:]
+        cycle1 = cast.get_first_actor("cycle1")
+        head = cycle1.get_segments()[0]
+        segments = cycle1.get_segments()[1:]
          # second cycle
         cycle2 = cast.get_first_actor("cycle2")
         head2 = cycle2.get_segments()[0]
@@ -81,12 +61,12 @@ class HandleCollisionsAction(Action):
             if self._is_game_over == True:
                 x = int(constants.MAX_X / 2)
                 y = int(constants.MAX_Y / 2)
-                position1 = Point(x, y)
+                position = Point(x, y)
                 # write player 1 wins
-                message1 = Actor()
-                message1.set_text("Player 2 wins!")
-                message1.set_position(position1)
-                cast.add_actor("messages", message1)
+                message = Actor()
+                message.set_text("Player 2 wins!")
+                message.set_position(position)
+                cast.add_actor("messages", message)
             
         for segment2 in segments:
              if head2.get_position().equals(segment2.get_position()):
@@ -110,24 +90,13 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            snake = cast.get_first_actor("snakes")
+            cycle1 = cast.get_first_actor("cycle1")
             cycle2 = cast.get_first_actor("cycle2") # second cycle
-            segments = snake.get_segments()
+            segments = cycle1.get_segments()
             segments2 = cycle2.get_segments() # second cycle
-            food = cast.get_first_actor("foods")
-
-            # x = int(constants.MAX_X / 2)
-            # y = int(constants.MAX_Y / 2)
-            # position1 = Point(x, y)
-            # # write player 1 wins
-            # message1 = Actor()
-            # message1.set_text("Player 2 wins!")
-            # message1.set_position(position1)
-            # cast.add_actor("messages", message1)
 
             for segment in segments:
                 segment.set_color(constants.WHITE)
-            food.set_color(constants.WHITE)
             
             #turns second cycle to white
             for segment2 in segments2:

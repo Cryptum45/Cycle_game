@@ -14,7 +14,6 @@ class Cycle_1(Actor):
     """
     def __init__(self):
         super().__init__()
-        #self._segmenets2 []
         self._segments = []
         self._prepare_body()
 
