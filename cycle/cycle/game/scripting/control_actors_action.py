@@ -74,6 +74,7 @@ class ControlActorsAction(Action):
         # up
         if self._keyboard_service2.is_key_down('i'):
             self._direction2 = Point(0, -constants.CELL_SIZE)
+            cycle2.grow_tail(segments2)
 
         # down
         if self._keyboard_service2.is_key_down('k'):
