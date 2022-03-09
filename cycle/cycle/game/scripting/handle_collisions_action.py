@@ -76,18 +76,29 @@ class HandleCollisionsAction(Action):
         for segment in segments2:
             if head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
+                
+            #write player 2 wins
+            if self._is_game_over == True:
+                x = int(constants.MAX_X / 2)
+                y = int(constants.MAX_Y / 2)
+                position1 = Point(x, y)
+                # write player 1 wins
+                message1 = Actor()
+                message1.set_text("Player 2 wins!")
+                message1.set_position(position1)
+                cast.add_actor("messages", message1)
             
         for segment2 in segments:
              if head2.get_position().equals(segment2.get_position()):
                 self._is_game_over = True
 
-                # write player 2 wins
+                # write player 1 wins
                 x = int(constants.MAX_X / 2)
                 y = int(constants.MAX_Y / 2)
                 position = Point(x, y)
 
                 message = Actor()
-                message.set_text("Player 2 wins")
+                message.set_text("Player 1 wins")
                 message.set_position(position)
                 cast.add_actor("messages", message)
             
@@ -105,14 +116,14 @@ class HandleCollisionsAction(Action):
             segments2 = cycle2.get_segments() # second cycle
             food = cast.get_first_actor("foods")
 
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
-            position1 = Point(x, y)
-            # write player 1 wins
-            message1 = Actor()
-            message1.set_text("Player 1 wins!")
-            message1.set_position(position1)
-            cast.add_actor("messages", message1)
+            # x = int(constants.MAX_X / 2)
+            # y = int(constants.MAX_Y / 2)
+            # position1 = Point(x, y)
+            # # write player 1 wins
+            # message1 = Actor()
+            # message1.set_text("Player 2 wins!")
+            # message1.set_position(position1)
+            # cast.add_actor("messages", message1)
 
             for segment in segments:
                 segment.set_color(constants.WHITE)
